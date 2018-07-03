@@ -1,0 +1,19 @@
+{
+  "name": "Homie test node",
+  "device_id": "homietestnode",
+  "wifi": {
+    "ssid": "...",
+    "password": "..."
+  },
+  "mqtt": {
+    "host": "...",
+    "port": 1883,
+    "base_topic": "homie/",
+    "auth": true,
+    "username": "...",
+    "password": "..."
+  },
+  "ota": {
+    "enabled": true
+  }
+}
