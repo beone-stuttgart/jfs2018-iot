@@ -1,1 +1,3 @@
-src/mqttblink/data/homie/config.json
+.vscode
+.pio*
+mqttblink/src/data/homie/config.json

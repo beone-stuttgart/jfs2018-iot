@@ -2,10 +2,22 @@
 
 Auf den Lolin-Boards befindet sich ein ESP8266, ein sehr vielseitiges System-on-a-Chip, welches neben mehreren Ein-/Ausgängen auch WLAN on Board bietet. Daher eignen sie sich sehr gut für irgendwelche IoT-Experimente.
 
-Die Lolin-Boards können (unter anderem) mit Hilfe der Arduino-IDE programmiert werden. Diese kann https://www.arduino.cc/en/Main/Software[hier heruntergeladen] werden.
+== Programmierung
+
+Es gibt verschiedene Möglichkeiten, die Lolin-Boards zu programmieren.
+
+=== Arduino IDE
+
+Die erste populäre Möglichkeit der Programmierung der ESPs war die Arduino-IDE. Diese kann https://www.arduino.cc/en/Main/Software[hier heruntergeladen] werden.
 Nach dem Start der IDE muss der Boardmanager für den ESP8266-Chip installiert werden. Hierzu muss in den Einstellungen der Arduino-IDE die URL des Boardmanagers eingegeben werden:
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 Wählt man nun das Board "NodeMCU 1.0", kann es auch schon losgehen!
+
+=== PlatformIO
+
+Komfortablere Arbeit ist mit PlatformIO möglich, einem Plugin für Visual Studio Code. Eine Anleitung zur Installation findet sich https://platformio.org/install/ide?install=vscode[hier].
+
+== USB-Treiber
 
 Der USB-Anschluss bildet eine serielle Verbindung zum Lolin Developer Board. Je nach Windows-Version kann es sein, dass ein passender Treiber für den verwendeten CH341-Chip installiert werden muss; eine Treibersammlung findet man beispielsweise https://github.com/himalayanelixir/Arduino_USB_Drivers[hier] (ohne Gewähr bezüglich Viren oder ähnlichem ;-)
 
@@ -18,8 +30,9 @@ Schritt-für-Schritt-Anleitungen zur Einrichtung der IDE findet man im Internet 
 
 Schnell zu IoT-Ergebnissen kommt man mit der https://github.com/marvinroger/homie-esp8266[Bibliothek Homie]. Sie erledigt die MQTT-Kommunikation, ausserdem lassen sich hiermit die programmierten Boards einfach konfigurieren: Ist noch keine Konfiguration hinterlegt, erzeugt Homie beim ersten Start einen WLAN-Accesspoint und bietet über eine Webseite die Möglichkeit, Zugangsdaten für WLAN und den MQTT-Server zu hinterlegen. Auch eigene Parameter können hier eingestellt werden.
 
-Zur Verwendung muss die Bibliothek (samt ihrer Abhängikeiten) zunächst aus den link:lib/[ZIP-Archiven] (Sketch - Include Library - Add .zip Library) installiert werden. Anschließend kann sie in eignen Programmen verwendet werden.
+Bei der Verwendung der Arduino-IDE muss die Bibliothek (samt ihrer Abhängigkeiten) zunächst aus den link:mqttblink/lib/[ZIP-Archiven] (Sketch - Include Library - Add .zip Library) installiert werden. Anschließend kann sie in eignen Programmen verwendet werden.
+Mit PlatformIO sind keine manuellen Schritte erforderlich, die Paketabhängigkeit ist bereits in der link:mqttblink/platformio.ini[Projektkonfiguration] hinterlegt.
 
-Die Beispielsanwendung kann nun übersetzt und übertragen werden. Mit Tools - Sketch Data Upload werden die Daten für die Konfigurationsseite übertragen. Und sollte etwas nicht gehen: Homie ist über die serielle Konsole sehr gesprächig und bietet auch eine API für eigene Lognachrichten.
+Die Beispielsanwendung kann nun übersetzt und übertragen werden. In der Arduino-IDE werden mittels „Tools - Sketch Data Upload”, in Platformio mittels „Upload File System Image“ die Daten für die Konfigurationsseite übertragen. Und sollte etwas nicht gehen: Homie ist über die serielle Konsole sehr gesprächig und bietet auch eine API für eigene Lognachrichten.
 
 Viel Spaß!
